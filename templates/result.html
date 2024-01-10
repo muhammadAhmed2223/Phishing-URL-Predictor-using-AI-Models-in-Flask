@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing URL Checker - Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <div class="container mt-4">
+
+        <h1 class="mb-3">Result</h1>
+        <p><b>URL:</b> {{ url }}</p>
+
+        {% if prediction == 'Phishing' %}
+            <div class="alert alert-danger" role="alert">
+                There is a possibility of the link being a <b>Phishing</b> attack! Click for information on caution: <a href="prevention" class="alert-link">Steps for Caution</a>
+            </div>
+            <div class="text-center">
+                <img src="{{ url_for('static', filename='warning2.gif') }}" class="img-fluid" alt="...">
+            </div>
+        {% else %}
+            <div class="alert alert-success" role="alert">
+                The link seems safe from <b>Phishing</b> attacks!
+            </div>
+            <div class="text-center">
+                <img src="{{ url_for('static', filename='secure.gif') }}" class="img-fluid" alt="...">
+            </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>
